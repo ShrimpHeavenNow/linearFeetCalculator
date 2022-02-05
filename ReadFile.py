@@ -43,7 +43,7 @@ for x in measurements:  # This whole section blows chunks, man. I know this coul
 while ["0", ""] in newMeasurements:  # This especially. There ought to be a way to not have this happen.
     newMeasurements.remove(["0", ""])
 
-print (len(newMeasurements), "len")
+print(len(newMeasurements), "Entries")
 total = 0
 for x in newMeasurements:
     feet = 0
@@ -68,8 +68,7 @@ for x in newMeasurements:
     subtotal = inches + (feet * 12)
     total += inches + (feet * 12)
     print("subtotal: ", subtotal)
-    print("total: ",total)
-
+    print("total: ", total)
 
 print("")
 print("Grand Total: ")
