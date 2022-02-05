@@ -1,5 +1,5 @@
 measurements = []
-saved = [5, 7.5]
+saved = []
 beep = True
 import winsound
 
@@ -16,6 +16,7 @@ print("")
 print("Begin entering your measurements below.")
 print("")
 
+
 def Fractionize(size):
     a, b = float("." + size).as_integer_ratio()
     fraction = str(str(a) + "/" + str(b))
@@ -28,11 +29,15 @@ def Filter(input):
     x = filter(str.isdigit, input)
     number = "".join(x)
     return number
+
+
 def Convert(number):
     feet = number // 12
     inches = number - feet * 12
     inches = str(inches).split(".")
+    print(feet)
     feet = str(feet).split(".")
+    print(feet)
     return str(feet[0] + "' - " + inches[0] + " " + Fractionize(inches[1]) + '"')
 
 
@@ -43,12 +48,9 @@ def PrintTotal(measurements):
     total = 0
     for x in measurements:
         total += x
-    feet = total // 12
-    inches = total - feet * 12
-    inches = str(inches).split(".")
-    feet = str(feet).split(".")
+    totaled = Convert(total)
     print("Measurements (in inches): ", measurements)
-    print("Total: " + feet[0] + "' - " + inches[0] + " " + Fractionize(inches[1]) + '"')
+    print("Total: ", totaled)
     return total
 
 
