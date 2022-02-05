@@ -15,7 +15,11 @@ def Convert(number):
     _inches = number - _feet * 12
     _inches = str(_inches).split(".")
     _feet = str(_feet).split(".")
-    return str(_feet[0] + "' - " + _inches[0] + " " + Fractionize(_inches[1]) + '"')
+    if _inches[1] != "0":
+        print("fart")
+        return str(_feet[0] + "' - " + _inches[0] + " " + Fractionize(_inches[1]) + '"')
+    else:
+        return str(_feet[0] + "' - " + _inches[0] + '"')
 
 
 newMeasurements = []

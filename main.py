@@ -34,11 +34,15 @@ def Filter(_input):
 
 
 def Convert(number):
-    feet = number // 12
-    inches = number - feet * 12
-    inches = str(inches).split(".")
-    feet = str(feet).split(".")
-    return str(feet[0] + "' - " + inches[0] + " " + Fractionize(inches[1]) + '"')
+    _feet = number // 12
+    _inches = number - _feet * 12
+    _inches = str(_inches).split(".")
+    _feet = str(_feet).split(".")
+    if _inches[1] != "0":
+        print("fart")
+        return str(_feet[0] + "' - " + _inches[0] + " " + Fractionize(_inches[1]) + '"')
+    else:
+        return str(_feet[0] + "' - " + _inches[0] + '"')
 
 
 def PrintTotal(_measurements):
