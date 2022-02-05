@@ -38,9 +38,9 @@ def Filter(_input):
 
 # Remove white space in entries
 
-# Remove empty entries
-
 # remove word entries
+
+# Remove empty entries
 
 # remove dashes
 
@@ -55,10 +55,5 @@ def Filter(_input):
 # convert them to foot' - inch" format
 
 # print it!
-
-
-
-
-
 
 print(measurements)
