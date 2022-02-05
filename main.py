@@ -1,7 +1,8 @@
+import winsound
 measurements = []
 saved = []
 beep = True
-import winsound
+
 
 print("")
 print("The Amazing Foot Adder")
@@ -25,8 +26,8 @@ def Fractionize(size):
     return fraction
 
 
-def Filter(input):
-    x = filter(str.isdigit, input)
+def Filter(_input):
+    x = filter(str.isdigit, _input)
     number = "".join(x)
     return number
 
@@ -35,26 +36,26 @@ def Convert(number):
     feet = number // 12
     inches = number - feet * 12
     inches = str(inches).split(".")
-    print(feet)
     feet = str(feet).split(".")
-    print(feet)
     return str(feet[0] + "' - " + inches[0] + " " + Fractionize(inches[1]) + '"')
 
 
-def PrintTotal(measurements):
-    if len(measurements) == 0:
+def PrintTotal(_measurements):
+    if len(_measurements) == 0:
         print("No Measurements.")
         return
     total = 0
-    for x in measurements:
+    for x in _measurements:
         total += x
     totaled = Convert(total)
-    print("Measurements (in inches): ", measurements)
+    print("Measurements (in inches): ", _measurements)
     print("Total: ", totaled)
     return total
 
 
-def AddMeasurements(measurements):
+def AddMeasurements(_measurements):
+    global beep
+    global saved
     feet = input("Feet: ")
     if feet == '':
         feet = "0"
@@ -63,13 +64,12 @@ def AddMeasurements(measurements):
         return []
     if "u" == str(feet).lower()[0]:
         print("Previous entry deleted.")
-        measurements = measurements[:-1]
-        PrintTotal(measurements)
+        _measurements = _measurements[:-1]
+        PrintTotal(_measurements)
         print("")
-        return list(measurements)
+        return list(_measurements)
     if "s" == str(feet).lower()[0]:
-        global saved
-        saved.append(PrintTotal(measurements))
+        saved.append(PrintTotal(_measurements))
         print("Value added to saved")
         print("Current Saved Values: ", saved)
         return
@@ -80,7 +80,6 @@ def AddMeasurements(measurements):
     if "b" == str(feet).lower()[0]:
         if beep:
             print("Beep disabled")
-            global beep
             beep = False
             return
         else:
@@ -107,19 +106,19 @@ def AddMeasurements(measurements):
         eighths = Filter(eighths)
         eighths = int(eighths)
 
-    except:
+    except ValueError:
         print("enter a valid number")
         winsound.PlaySound("*", winsound.SND_ALIAS)
-        return measurements
+        return _measurements
     inches += (feet * 12) + (eighths / 8)
-    measurements.append(inches)
+    _measurements.append(inches)
 
-    PrintTotal(measurements)
-    return measurements
+    PrintTotal(_measurements)
+    return _measurements
 
 
 while True:
     measurements = AddMeasurements(measurements)
-    if beep == True:
+    if beep:
         winsound.Beep(440, 100)
     print("")
