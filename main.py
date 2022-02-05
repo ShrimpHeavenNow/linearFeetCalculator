@@ -13,6 +13,7 @@ print('To save your current total and start a new measurement, type "s" or "save
 print('to total your saved measurements, type "t" or "total" in the "Feet" prompt')
 print('To clear your saved numbers, type "c" or "clear" in the "Feet" prompt')
 print('There is a beep after each entry. type "b" or "beep" in the "Feet" prompt to enable or disable it.')
+print('To see the total in inches and decimal form, type "inch" or "i" in the "feet" prompt')
 print("")
 print("Begin entering your measurements below.")
 print("")
@@ -89,6 +90,10 @@ def AddMeasurements(_measurements):
     if "c" == str(feet).lower()[0]:
         saved = []
         print("Saved numbers cleared.")
+        return
+    if "i" == str(feet).lower()[0]:
+        decimal = PrintTotal(_measurements)
+        print("The measurement in inches is: ", decimal)
         return
     feet = Filter(feet)
     try:
