@@ -36,6 +36,29 @@ def Filter(_input):
     number = "".join(x)
     return number
 
+# Remove white space in entries
+
+# Remove empty entries
+
+# remove word entries
+
+# remove dashes
+
+# make sure every entry has a feet and inches (Add feet to entries with no feet)
+
+# convert inches with fractions to decimals
+
+# convert each entry to inches w/ decimals
+
+# add  entried
+
+# convert them to foot' - inch" format
+
+# print it!
+
+
+
+
 
 
 print(measurements)
