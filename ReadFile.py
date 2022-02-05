@@ -50,7 +50,7 @@ def Filter(_input):
 
 # convert each entry to inches w/ decimals
 
-# add  entried
+# add entries
 
 # convert them to foot' - inch" format
 
