@@ -46,6 +46,7 @@ def Convert(number):
 
 
 def PrintTotal(_measurements):
+
     if len(_measurements) == 0:
         print("No Measurements.")
         return
@@ -74,6 +75,9 @@ def AddMeasurements(_measurements):
         print("")
         return list(_measurements)
     if "s" == str(feet).lower()[0]:
+        if measurements is None or len(measurements) >= 0:
+            print("You must have a value to save.")
+            return
         saved.append(PrintTotal(_measurements))
         print("Value added to saved")
         print("Current Saved Values: ", saved)
