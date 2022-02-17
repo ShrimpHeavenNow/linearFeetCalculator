@@ -3,7 +3,6 @@ measurements = []
 saved = []
 beep = True
 
-
 print("")
 print("The Amazing Foot Adder")
 print("")
@@ -19,8 +18,8 @@ print("Begin entering your measurements below.")
 print("")
 
 
-def Fractionize(size):
-    a, b = float("." + size).as_integer_ratio()
+def Fractionize(size):  # Todo: Reduce to 32nds.
+    a, b = float("." + size).as_integer_ratio()  # This is REALLY dumb, right?
     fraction = str(str(a) + "/" + str(b))
     if b == 1:
         fraction = ""
@@ -28,8 +27,14 @@ def Fractionize(size):
 
 
 def Filter(_input):
-    x = filter(str.isdigit, _input)
-    number = "".join(x)
+    number = ""
+    x = _input
+    for y in x:
+        if filter(str.isdigit,y):
+            number += str(y)
+        elif y == "." or y == "-":
+            number += y
+    print(number)
     return number
 
 
@@ -39,7 +44,6 @@ def Convert(number):
     _inches = str(_inches).split(".")
     _feet = str(_feet).split(".")
     if _inches[1] != "0":
-        print("fart")
         return str(_feet[0] + "' - " + _inches[0] + " " + Fractionize(_inches[1]) + '"')
     else:
         return str(_feet[0] + "' - " + _inches[0] + '"')
@@ -105,19 +109,19 @@ def AddMeasurements(_measurements):
         return
     feet = Filter(feet)
     try:
-        feet = int(feet)
+        feet = float(feet)
 
         inches = input("Inches: ")
         if inches == '':
             inches = "0"
         inches = Filter(inches)
-        inches = int(inches)
+        inches = float(inches)  # Is there a reason this is not n the filter function?
 
         eighths = input("eighths: ")
         if eighths == '':
             eighths = "0"
         eighths = Filter(eighths)
-        eighths = int(eighths)
+        eighths = float(eighths)
 
     except ValueError:
         print("enter a valid number")
