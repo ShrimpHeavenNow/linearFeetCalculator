@@ -12,7 +12,7 @@ print('To save your current total and start a new measurement, type "s" or "save
 print('To total your saved measurements, type "t" or "total" in the "Feet" prompt')
 print('To clear your saved numbers, type "c" or "clear" in the "Feet" prompt')
 print('There is a beep after each entry. Type "b" or "beep" in the "Feet" prompt to enable or disable it.')
-print('To see the total in inches and decimal form, type "inch" or "i" in the "feet" prompt')
+print('To see the total in inches and decimal form, type "inch" or "i" in the "Feet" prompt')
 print("")
 print("Begin entering your measurements below.")
 print("")
@@ -34,7 +34,6 @@ def Filter(_input):
             number += str(y)
         elif y == "." or y == "-":
             number += y
-    print(number)
     return number
 
 
@@ -79,26 +78,26 @@ def AddMeasurements(_measurements):
         print("")
         return list(_measurements)
     if "s" == str(feet).lower()[0]:
-        if measurements is None or len(measurements) >= 0:
+        if measurements is None or len(measurements) == 0:
             print("You must have a value to save.")
-            return
+            return measurements
         saved.append(PrintTotal(_measurements))
         print("Value added to saved")
         print("Current Saved Values: ", saved)
-        return
+        return []
     if "t" == str(feet).lower()[0]:
         print("Totalling saved measurements:")
         PrintTotal(saved)
-        return
+        return measurements
     if "b" == str(feet).lower()[0]:
         if beep:
             print("Beep disabled")
             beep = False
-            return
+            return measurements
         else:
             print("Beep Enabled")
             beep = True
-            return
+            return measurements
     if "c" == str(feet).lower()[0]:
         saved = []
         print("Saved numbers cleared.")
@@ -106,7 +105,7 @@ def AddMeasurements(_measurements):
     if "i" == str(feet).lower()[0]:
         decimal = PrintTotal(_measurements)
         print("The measurement in inches is: ", decimal)
-        return
+        return measurements
     feet = Filter(feet)
     try:
         feet = float(feet)

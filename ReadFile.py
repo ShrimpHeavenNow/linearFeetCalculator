@@ -1,4 +1,8 @@
-with open('measurements.txt') as f:
+print("This program will total all foot- inches entries of a text file together")
+print("Files must be .txt files with a new measurement per line.")
+print("Please use the following format for inchs and feet: 10' 8 \" ")
+filepath = input("Please paste the file path to your measurement text file: ")
+with open(filepath) as f:
     measurements = [line.strip().split("'") for line in f]
 
 
@@ -22,6 +26,7 @@ def Convert(number):
         return str(_feet[0] + "' - " + _inches[0] + '"')
 
 
+# Parsing
 newMeasurements = []
 for x in measurements:  # This whole section blows chunks, man. I know this could be more elegant.
     keep = True
@@ -31,7 +36,7 @@ for x in measurements:  # This whole section blows chunks, man. I know this coul
     for y in x:
         newy = y
         if "-" in newy:
-            newy = newy.replace("-", "")
+            newy = newy.replace("-", "")  # TODO: Make negatives work?
         if '"' in newy:
             newy = newy.replace('"', "")
         newy = newy.strip()
@@ -50,6 +55,7 @@ while ["0", ""] in newMeasurements:  # This especially. There ought to be a way 
 print(len(newMeasurements), "Entries")
 total = 0
 for x in newMeasurements:
+    print(x)
     feet = 0
     inches = 0.0
     z = 0
@@ -73,6 +79,7 @@ for x in newMeasurements:
     total += inches + (feet * 12)
     print("subtotal: ", subtotal)
     print("total: ", total)
+    print()
 
 print("")
 print("Grand Total: ")
