@@ -1,7 +1,9 @@
-print("This program will total all foot- inches entries of a text file together")
+print("This program will total all foot, inches entries of a text file together.")
 print("Files must be .txt files with a new measurement per line.")
-print("Please use the following format for inchs and feet: 10' 8 \" ")
-filepath = input("Please paste the file path to your measurement text file: ")
+print("Use the following format for inches and feet: 10' 8 1/2\" ")
+filepath = input("Paste (or type) the file path to your measurement text file: ")
+print()
+filepath = "measurements.txt"
 with open(filepath) as f:
     measurements = [line.strip().split("'") for line in f]
 
@@ -20,7 +22,6 @@ def Convert(number):
     _inches = str(_inches).split(".")
     _feet = str(_feet).split(".")
     if _inches[1] != "0":
-        print("fart")
         return str(_feet[0] + "' - " + _inches[0] + " " + Fractionize(_inches[1]) + '"')
     else:
         return str(_feet[0] + "' - " + _inches[0] + '"')
@@ -51,17 +52,20 @@ for x in measurements:  # This whole section blows chunks, man. I know this coul
 
 while ["0", ""] in newMeasurements:  # This especially. There ought to be a way to not have this happen.
     newMeasurements.remove(["0", ""])
+print(len(measurements), "Entries")
+print(len(newMeasurements), "Valid Entries")
+if len(measurements) != len(newMeasurements):
+    print("Please try agan with the format: 10' 1 1/2 \"")
 
-print(len(newMeasurements), "Entries")
 total = 0
 for x in newMeasurements:
-    print(x)
+    # print(x)
     feet = 0
     inches = 0.0
     z = 0
     fractions = 0
     feet += int(x[0])
-    print(feet, "feet")
+    # print(feet, "feet")
     if "/" in x[1]:
         if " " in x[1]:
             z = x[1].split(" ")
@@ -74,12 +78,12 @@ for x in newMeasurements:
     else:
         z = x[1]
     inches += int(z) + fractions
-    print(inches, " inches")
+    # print(inches, " inches")
     subtotal = inches + (feet * 12)
     total += inches + (feet * 12)
-    print("subtotal: ", subtotal)
-    print("total: ", total)
-    print()
+    # print("subtotal: ", subtotal)
+    # print("total: ", total)
+    # print()
 
 print("")
 print("Grand Total: ")
