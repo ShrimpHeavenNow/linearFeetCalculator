@@ -116,7 +116,7 @@ def AddMeasurements(_measurements):
         inches = Filter(inches)
         inches = float(inches)  # Is there a reason this is not n the filter function?
 
-        eighths = input("eighths: ")
+        eighths = input("Eighths: ")
         if eighths == '':
             eighths = "0"
         eighths = Filter(eighths)
